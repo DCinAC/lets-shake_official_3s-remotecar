@@ -1,6 +1,8 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, receivedNumber * PRIV_mult * enabled)
-    basic.pause(PRIV_time - 10)
+    if (enabled) {
+        mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, receivedNumber * PRIV_mult)
+        basic.pause(PRIV_time - 10)
+    }
 })
 // DEBUG!!!!
 // 
@@ -34,22 +36,22 @@ radio.onReceivedValue(function (name, value) {
         PRIV_mult = TBV_mult
     }
 })
-/**
- * <- remote
- * 
- *            car->
- */
 let TBV_mult = 0
 let TBV_time = 0
 let shake_count = 0
 let PRIV_time = 0
 let PRIV_mult = 0
-let enabled = 0
+let enabled = false
 led.enable(false)
 radio.setGroup(69)
 enabled = false
 radio.sendValue("time", 3000)
 radio.sendValue("multiplier", 15)
+/**
+ * <- remote
+ * 
+ *            car->
+ */
 /**
  * TBV= To Be Validated
  */
