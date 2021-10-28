@@ -1,3 +1,4 @@
+// make car move
 radio.onReceivedNumber(function (receivedNumber) {
     if (enabled) {
         if (init_wait) {
@@ -10,9 +11,9 @@ radio.onReceivedNumber(function (receivedNumber) {
 // DEBUG!!!!
 // 
 input.onButtonPressed(Button.A, function () {
-    radio.sendString("success")
+    enabled = true
 })
-// common code
+// common code (activation)
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "success") {
         enabled = true
@@ -30,6 +31,7 @@ radio.onReceivedValue(function (name, value) {
     } else {
     	
     }
+    // anti-cheat part
     if (TBV_time != 3000 && (TBV_time != 5000 && TBV_time != 8000)) {
         PRIV_time = 3600000
     } else {
@@ -42,6 +44,7 @@ radio.onReceivedValue(function (name, value) {
     }
 })
 // common code
+// (init)
 let PRIV_time = 0
 let TBV_mult = 0
 let TBV_time = 0
