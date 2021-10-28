@@ -9,7 +9,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
 })
 // DEBUG!!!!
-// 
+// PLS REMOVE BEFORE USE!
 input.onButtonPressed(Button.A, function () {
     enabled = true
 })
