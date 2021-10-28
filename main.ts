@@ -1,14 +1,18 @@
+/**
+ * TBV= To Be Validated
+ */
 radio.onReceivedNumber(function (receivedNumber) {
     if (enabled) {
         mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, receivedNumber * PRIV_mult)
-        basic.pause(PRIV_time - 10)
+        basic.pause(PRIV_time - 100)
     }
 })
 // DEBUG!!!!
 // 
 input.onButtonPressed(Button.A, function () {
-	
+    radio.sendString("success")
 })
+// common code
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "success") {
         enabled = true
@@ -17,6 +21,7 @@ radio.onReceivedString(function (receivedString) {
 input.onGesture(Gesture.Shake, function () {
     shake_count += 1
 })
+// init+verification
 radio.onReceivedValue(function (name, value) {
     if (name == "time") {
         TBV_time = value
@@ -26,7 +31,7 @@ radio.onReceivedValue(function (name, value) {
     	
     }
     if (TBV_time != 3000 && (TBV_time != 5000 && TBV_time != 8000)) {
-        PRIV_time = 9999
+        PRIV_time = 3600000
     } else {
         PRIV_time = TBV_time
     }
@@ -36,6 +41,7 @@ radio.onReceivedValue(function (name, value) {
         PRIV_mult = TBV_mult
     }
 })
+// common code
 let TBV_mult = 0
 let TBV_time = 0
 let shake_count = 0
@@ -52,13 +58,10 @@ radio.sendValue("multiplier", 15)
  * 
  *            car->
  */
-/**
- * TBV= To Be Validated
- */
 basic.forever(function () {
     if (enabled) {
         radio.sendNumber(shake_count)
         shake_count = 0
-        basic.pause(3000)
     }
+    basic.pause(3000)
 })
