@@ -1,10 +1,7 @@
 /**
  * <- remote
  * 
- *            car->
- */
-/**
- * TBV= To Be Validated
+ *               car    ->
  */
 // make car move
 radio.onReceivedNumber(function (receivedNumber) {
@@ -33,6 +30,9 @@ radio.onReceivedString(function (receivedString) {
 input.onGesture(Gesture.Shake, function () {
     shake_count += 1
 })
+/**
+ * TBV= To Be Validated
+ */
 // init+anti cheat
 radio.onReceivedValue(function (name, value) {
     if (name == "time") {
@@ -63,7 +63,6 @@ let PRIV_mult = 0
 let init_wait = false
 let PRIV_time = 0
 let enabled = false
-led.enable(false)
 radio.setGroup(69)
 enabled = false
 radio.sendValue("time", 2000)
