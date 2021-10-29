@@ -11,9 +11,9 @@ radio.onReceivedNumber(function (receivedNumber) {
             basic.pause(PRIV_time)
             init_wait = false
         }
-        mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, receivedNumber * PRIV_mult)
+        mbit_小车类.CarCtrlSpeed(mbit_小车类.CarState.Car_Run, receivedNumber * PRIV_mult)
     } else {
-    	
+        mbit_小车类.CarCtrlSpeed(mbit_小车类.CarState.Car_Run, 0)
     }
 })
 // DEBUG!!!!
