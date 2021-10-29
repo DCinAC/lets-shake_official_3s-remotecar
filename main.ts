@@ -16,19 +16,14 @@ radio.onReceivedNumber(function (receivedNumber) {
         mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, 0)
     }
 })
-// DEBUG!!!!
-// PLS REMOVE BEFORE USE!
-input.onButtonPressed(Button.A, function () {
-    enabled = true
-})
-input.onGesture(Gesture.Shake, function () {
-    shake_count += 1
-})
 // common code (activation)
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "success") {
         enabled = true
     }
+})
+input.onGesture(Gesture.Shake, function () {
+    shake_count += 1
 })
 /**
  * TBV= To Be Validated
@@ -48,7 +43,7 @@ radio.onReceivedValue(function (name, value) {
     } else {
         PRIV_time = TBV_time
     }
-    if (TBV_time == 2000 && !(TBV_mult == 15) || (TBV_time == 4000 && !(TBV_mult == 10) || TBV_time == 6000 && !(TBV_mult == 5))) {
+    if (TBV_time == 2000 && !(TBV_mult == 22) || (TBV_time == 4000 && !(TBV_mult == 11) || TBV_time == 6000 && !(TBV_mult == 8))) {
         PRIV_mult = 0
     } else {
         PRIV_mult = TBV_mult
@@ -66,7 +61,7 @@ let enabled = false
 radio.setGroup(69)
 enabled = false
 radio.sendValue("time", 2000)
-radio.sendValue("multiplier", 15)
+radio.sendValue("multiplier", 22)
 loops.everyInterval(2000, function () {
     radio.sendNumber(shake_count)
     shake_count = 0
