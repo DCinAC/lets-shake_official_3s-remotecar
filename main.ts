@@ -43,12 +43,12 @@ radio.onReceivedValue(function (name, value) {
     	
     }
     // anti-cheat part
-    if (TBV_time != 3000 && (TBV_time != 5000 && TBV_time != 8000)) {
+    if (TBV_time != 2000 && (TBV_time != 4000 && TBV_time != 6000)) {
         PRIV_time = 3600000
     } else {
         PRIV_time = TBV_time
     }
-    if (TBV_time == 3000 && !(TBV_mult == 15) || (TBV_time == 5000 && !(TBV_mult == 10) || TBV_time == 8000 && !(TBV_mult == 5))) {
+    if (TBV_time == 2000 && !(TBV_mult == 15) || (TBV_time == 4000 && !(TBV_mult == 10) || TBV_time == 6000 && !(TBV_mult == 5))) {
         PRIV_mult = 0
     } else {
         PRIV_mult = TBV_mult
