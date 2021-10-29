@@ -13,7 +13,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         }
         mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, receivedNumber * PRIV_mult)
     } else {
-    	
+        mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, 0)
     }
 })
 // DEBUG!!!!
@@ -21,14 +21,14 @@ radio.onReceivedNumber(function (receivedNumber) {
 input.onButtonPressed(Button.A, function () {
     enabled = true
 })
+input.onGesture(Gesture.Shake, function () {
+    shake_count += 1
+})
 // common code (activation)
 radio.onReceivedString(function (receivedString) {
     if (receivedString == "success") {
         enabled = true
     }
-})
-input.onGesture(Gesture.Shake, function () {
-    shake_count += 1
 })
 /**
  * TBV= To Be Validated
