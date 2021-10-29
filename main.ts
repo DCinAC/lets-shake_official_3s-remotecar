@@ -1,8 +1,16 @@
+/**
+ * <- remote
+ * 
+ *            car->
+ */
+/**
+ * TBV= To Be Validated
+ */
 // make car move
 radio.onReceivedNumber(function (receivedNumber) {
     if (enabled) {
         if (init_wait) {
-            basic.pause(3000)
+            basic.pause(PRIV_time)
             init_wait = false
         }
         mbit_Robot.CarCtrlSpeed(mbit_Robot.CarState.Car_Run, receivedNumber * PRIV_mult)
@@ -45,11 +53,11 @@ radio.onReceivedValue(function (name, value) {
 })
 // common code
 // (init)
-let PRIV_time = 0
 let TBV_mult = 0
 let TBV_time = 0
 let shake_count = 0
 let PRIV_mult = 0
+let PRIV_time = 0
 let init_wait = false
 let enabled = false
 led.enable(false)
@@ -57,18 +65,12 @@ radio.setGroup(69)
 enabled = false
 radio.sendValue("time", 3000)
 radio.sendValue("multiplier", 15)
-/**
- * <- remote
- * 
- *            car->
- */
-/**
- * TBV= To Be Validated
- */
 basic.forever(function () {
     if (enabled) {
-        radio.sendNumber(shake_count)
-        shake_count = 0
-        basic.pause(3000)
+    	
     }
+})
+loops.everyInterval(3000, function () {
+    radio.sendNumber(shake_count)
+    shake_count = 0
 })
