@@ -66,9 +66,9 @@ let enabled = false
 led.enable(false)
 radio.setGroup(69)
 enabled = false
-radio.sendValue("time", 3000)
+radio.sendValue("time", 2000)
 radio.sendValue("multiplier", 15)
-loops.everyInterval(3000, function () {
+loops.everyInterval(2000, function () {
     radio.sendNumber(shake_count)
     shake_count = 0
 })
